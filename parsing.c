@@ -6,7 +6,7 @@
 /*   By: ajoliet <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                               +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/06 15:19:22 by ajoliet           #+#    #+#             */
-/*   Updated: 2022/09/12 17:25:54 by ajoliet          ###   ########.fr       */
+/*   Updated: 2022/09/13 19:15:09 by ajoliet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,19 +20,6 @@
 	ft_lstadd_back(&d->first, &new);
 }
 */
-void	bigchain(char **av, t_data *d)
-{
-	int i;
-
-	i = 2;
-	d->args = ft_strjoin(av[1], av[2]);
-	while (av[++i])
-	{
-		d->args = ft_strjoin(d->args, av[i]);
-		d->args = ft_strjoin(d->args, " ");
-	}
-	printf("%s", d->args);
-}
 
 int	ps_atoi(char *s)
 {
