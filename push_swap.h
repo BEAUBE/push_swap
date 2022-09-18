@@ -6,11 +6,12 @@
 /*   By: ajoliet <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/02 13:32:05 by ajoliet           #+#    #+#             */
-/*   Updated: 2022/09/13 19:25:14 by ajoliet          ###   ########.fr       */
+/*   Updated: 2022/09/18 18:42:57 by ajoliet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 # include <stdio.h>
+# include <unistd.h>
 # include <stdlib.h>
 
 typedef struct s_list
@@ -19,20 +20,16 @@ typedef struct s_list
 	struct s_list	*next;
 }		t_list;
 
-typedef struct s_data
-{
-	int iavf;
-	int	iavs;
-	int	curarg;
-	char *chain;
-	struct s_list	*first;
-}		t_data;
-
 t_list	*ft_lstnew(int content);
 t_list	*ft_lstlast(t_list *lst);
-void	ft_laststep(char *av, t_data *d);
+t_list	*lstcreate(char **tab);
+void	ft_laststep(char *av);
 void	ft_lstadd_back(t_list **lst, t_list *new);
-char	*bigchain(char **av, t_data *d);
-int		verifyacav(int ac, char **av, t_data *d);
-int		ps_atoi(char *s);
+void	ft_error(void);
+void	nodoubles(t_list *first);
+void 	verifytab(char **tab);
+char    **create_tab(char **av);
 char	*ft_strjoin(char const *s1, char const *s2);
+char	**ft_split(char const *s, char c);
+int		verifyacav(int ac, char **av);
+int		ps_atoi(char *s);

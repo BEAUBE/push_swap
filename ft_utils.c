@@ -6,7 +6,7 @@
 /*   By: ajoliet <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/08 17:39:35 by ajoliet           #+#    #+#             */
-/*   Updated: 2022/09/13 19:38:31 by ajoliet          ###   ########.fr       */
+/*   Updated: 2022/09/16 15:32:32 by ajoliet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,4 +48,10 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	}
 	buff[i] = '\0';
 	return (buff);
+}
+
+void ft_error(void)
+{
+	write(2, "Error\n", 7);
+	exit(1);
 }

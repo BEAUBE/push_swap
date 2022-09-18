@@ -6,21 +6,22 @@
 /*   By: ajoliet <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/07 15:47:10 by ajoliet           #+#    #+#             */
-/*   Updated: 2022/09/12 16:10:04 by ajoliet          ###   ########.fr       */
+/*   Updated: 2022/09/16 21:16:03 by ajoliet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-/*
+
+ 
 t_list	*ft_lstnew(int content)
 {
-	t_list	new;
+	t_list	*new;
 
 	new = malloc(sizeof(t_list));
 	if (!new)
 		return (NULL);
-	new.nbr = content;
-	new.next = NULL;
+	new->nbr = content;
+	new->next = NULL;
 	return (new);
 }
 
@@ -34,6 +35,8 @@ t_list	*ft_lstlast(t_list *lst)
 
 void	ft_lstadd_back(t_list **lst, t_list *new)
 {
+	t_list	*ptr;
+
 	if (*lst)
 	{
 		ptr = ft_lstlast(*lst);
@@ -44,4 +47,4 @@ void	ft_lstadd_back(t_list **lst, t_list *new)
 		*lst = new;
 		return ;
 	}
-}*/
+}

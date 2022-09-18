@@ -6,7 +6,7 @@
 #    By: ajoliet <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/02 13:22:16 by ajoliet           #+#    #+#              #
-#    Updated: 2022/09/13 19:17:28 by ajoliet          ###   ########.fr        #
+#    Updated: 2022/09/17 18:07:12 by ajoliet          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,11 +15,11 @@ SRCS = main.c \
 	   parsing.c \
 	   utils_lsts.c \
 	   ft_utils.c \
-	   big_chain.c
+	   ft_split.c
 OBJS = $(SRCS:.c=.o)
 RM = rm -rf
 CC = gcc
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror -g
 
 all: $(NAME)
 
