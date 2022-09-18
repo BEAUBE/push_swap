@@ -6,7 +6,7 @@
 /*   By: ajoliet <ajoliet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/13 19:11:25 by ajoliet           #+#    #+#             */
-/*   Updated: 2022/09/18 19:37:04 by ajoliet          ###   ########.fr       */
+/*   Updated: 2022/09/18 23:20:37 by ajoliet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,7 +91,7 @@ void	nodoubles(t_list *first)
 		nbr = fornbr->nbr;
 		printf("nbr analysé : %i, comparé à : ", nbr);
 		tmp = fornbr->next;
-		while (tmp->next != NULL)
+		while (tmp != NULL)
 		{
 			printf("%i ", tmp->nbr);
 			if (tmp->nbr == nbr)
