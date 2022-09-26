@@ -6,7 +6,7 @@
 /*   By: ajoliet <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/22 15:43:47 by ajoliet           #+#    #+#             */
-/*   Updated: 2022/09/26 17:48:29 by ajoliet          ###   ########.fr       */
+/*   Updated: 2022/09/26 18:03:38 by ajoliet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,11 +41,11 @@ void	ra(t_list **src_head)
 	t_list *tmp;
 	t_list *element;
 
+	element = *src_head;
 	tmp = *src_head;
+	src_head = (*src_head)->next;
 	while (tmp->next)
 		tmp = tmp->next;
-	element = *src_head;
-	src_head = (*src_head)->next;
 	element->next = NULL;
 	tmp->next = &element;
 	write(1, "ra\n", 3);
