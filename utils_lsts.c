@@ -6,7 +6,7 @@
 /*   By: ajoliet <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/07 15:47:10 by ajoliet           #+#    #+#             */
-/*   Updated: 2022/09/16 21:16:03 by ajoliet          ###   ########.fr       */
+/*   Updated: 2022/09/26 16:19:25 by ajoliet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,4 +47,17 @@ void	ft_lstadd_back(t_list **lst, t_list *new)
 		*lst = new;
 		return ;
 	}
+}
+
+int ft_lstsize(t_list *lst)
+{
+    int     i;
+
+    i = 0;
+    while (lst)
+    {
+        lst = lst->next;
+        i++;
+    }
+    return (i);
 }

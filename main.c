@@ -6,22 +6,61 @@
 /*   By: ajoliet <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/02 13:16:02 by ajoliet           #+#    #+#             */
-/*   Updated: 2022/09/18 23:18:57 by ajoliet          ###   ########.fr       */
+/*   Updated: 2022/09/26 16:30:38 by ajoliet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
+void	print_list(t_list *first);
+
 int	main(int ac, char **av)
 {
+	t_list	*stack_a;
+	t_list	*stack_b;
 	char **tab;
-	t_list	*first;
+//	int i;
+//	int x;
 
+	(void)stack_b;
+	(void)stack_a;
+	tab = NULL;
+	stack_a = NULL;
 	if (ac > 1)
 	{
 		tab = create_tab(av);
 		verifytab(tab);
-		first = lstcreate(tab);
-		nodoubles(first);
+		stack_a = lstcreate(tab);
+		stack_b = NULL;
+		nodoubles(stack_a);
+//		x = add_id(&stack_a);
+		add_id(&stack_a);
+		print_list(stack_a);
+		ra(&stack_a);
+		print_list(stack_a);
+//		x = maxbit(x);
+//		ft_sort(&stack_a, &stack_b, x);
+//		printf("%i\n", maxbit(x));
+//		ft_sort(stack_a, stack_b);
+		
+	}
+//	i = 0;
+//	while (tab[i] != NULL)
+//			free(tab[i++]);
+	free(tab);
+}
+
+void	print_list(t_list *first)
+{
+	t_list	*tmp;
+	int i;
+
+	tmp = first;
+	i = 1;
+	while (tmp)
+	{
+		printf("list n%i : nbr = %i, id = %i\n", i, tmp->nbr, tmp->id);
+		tmp = tmp->next;
+		i++;
 	}
 }
