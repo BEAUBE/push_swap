@@ -6,7 +6,7 @@
 /*   By: ajoliet <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 15:33:27 by ajoliet           #+#    #+#             */
-/*   Updated: 2022/09/26 16:25:55 by ajoliet          ###   ########.fr       */
+/*   Updated: 2022/09/27 17:50:11 by ajoliet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ int		maxbit(int nb)
 			i++;
 	return (i);
 }
-/*
+
 void	ft_sort(t_list **stack_a, t_list **stack_b, int maxbit)
 {
 	int x;
@@ -64,13 +64,13 @@ void	ft_sort(t_list **stack_a, t_list **stack_b, int maxbit)
 	{
 		while (i < lstsize)
 		{
-			if ((stack_a->nbr >> x) & 1)
-				pb();
+			if (((*stack_a)->nbr >> x) & 1)
+				pb(stack_a, stack_b);
 			else
-				ra();
+				ra(stack_a);
 		}
 		while (stack_b)
-			pa();
+			pa(stack_b, stack_a);
 		x++;
 	}
-}*/
+}

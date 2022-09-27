@@ -6,7 +6,7 @@
 /*   By: ajoliet <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/02 13:16:02 by ajoliet           #+#    #+#             */
-/*   Updated: 2022/09/26 16:30:38 by ajoliet          ###   ########.fr       */
+/*   Updated: 2022/09/27 17:52:28 by ajoliet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,9 @@ int	main(int ac, char **av)
 	t_list	*stack_b;
 	char **tab;
 //	int i;
-//	int x;
+	int x;
 
+	x = 0;
 	(void)stack_b;
 	(void)stack_a;
 	tab = NULL;
@@ -33,16 +34,11 @@ int	main(int ac, char **av)
 		stack_a = lstcreate(tab);
 		stack_b = NULL;
 		nodoubles(stack_a);
-//		x = add_id(&stack_a);
 		add_id(&stack_a);
 		print_list(stack_a);
-		ra(&stack_a);
+		x = maxbit(x);
+		ft_sort(&stack_a, &stack_b, x);
 		print_list(stack_a);
-//		x = maxbit(x);
-//		ft_sort(&stack_a, &stack_b, x);
-//		printf("%i\n", maxbit(x));
-//		ft_sort(stack_a, stack_b);
-		
 	}
 //	i = 0;
 //	while (tab[i] != NULL)

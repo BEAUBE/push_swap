@@ -6,7 +6,7 @@
 /*   By: ajoliet <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/02 13:32:05 by ajoliet           #+#    #+#             */
-/*   Updated: 2022/09/26 16:22:43 by ajoliet          ###   ########.fr       */
+/*   Updated: 2022/09/27 17:54:46 by ajoliet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,6 @@ typedef struct s_list
 	void	*next;
 }		t_list;
 
-t_list	*ft_lstnew(int content);
-t_list	*ft_lstlast(t_list *lst);
-t_list	*lstcreate(char **tab);
 void	ft_laststep(char *av);
 void	ft_lstadd_back(t_list **lst, t_list *new);
 void	ft_error(void);
@@ -33,7 +30,10 @@ void 	verifytab(char **tab);
 void	ft_sort(t_list **stack_a, t_list **stack_b, int maxbit);
 void	pa(t_list **src_head, t_list **dest_head);
 void	pb(t_list **src_head, t_list **dest_head);
-void	ra(t_list **src_head);
+t_list	*ft_lstlast(t_list *lst);
+t_list	*ft_lstnew(int content);
+t_list	*lstcreate(char **tab);
+t_list	*ra(t_list **src_head);
 char    **create_tab(char **av);
 char	*ft_strjoin(char const *s1, char const *s2);
 char	**ft_split(char const *s, char c);

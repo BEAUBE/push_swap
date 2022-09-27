@@ -6,47 +6,54 @@
 /*   By: ajoliet <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/22 15:43:47 by ajoliet           #+#    #+#             */
-/*   Updated: 2022/09/26 18:03:38 by ajoliet          ###   ########.fr       */
+/*   Updated: 2022/09/27 17:37:21 by ajoliet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-/*copier le pointeur src dans un tmp
-changer le pointeur src au 2e de la liste
-faire pointer tmp sur le premier de dest
-changer dest en tmp*/
-/*
 void	pa(t_list **src_head, t_list **dest_head)
 {
 	t_list *tmp;
+	t_list	*new_head_src;
+	t_list	*new_head_dest;
 
+	new_head_src = (*src_head)->next;
+	new_head_dest = (*src_head);
 	tmp = *src_head;
-	*src_head = (*src_head)->next;
-	dest_head = &tmp;
+	tmp->next = *dest_head;
+	*src_head = new_head_src;
+	*dest_head = new_head_dest;
+	write(1, "pa\n", 3);
 }
 
 void	pb(t_list **src_head, t_list **dest_head)
 {
 	t_list *tmp;
+	t_list	*new_head_src;
+	t_list	*new_head_dest;
 
-	*tmp = *src_head;
-	*src_head = *src_head->next;
-	*dest_head = *tmp;
-}
-*/
-// a finir et a desiner surtout
-void	ra(t_list **src_head)
-{
-	t_list *tmp;
-	t_list *element;
-
-	element = *src_head;
+	new_head_src = (*src_head)->next;
+	new_head_dest = (*src_head);
 	tmp = *src_head;
-	src_head = (*src_head)->next;
+	tmp->next = *dest_head;
+	*src_head = new_head_src;
+	*dest_head = new_head_dest;
+	write(1, "pb\n", 3);
+}
+
+t_list	*ra(t_list **src_head)
+{
+	t_list	*tmp;
+	t_list	*new_head;
+
+	new_head = (*src_head)->next;
+	tmp = (*src_head);
 	while (tmp->next)
 		tmp = tmp->next;
-	element->next = NULL;
-	tmp->next = &element;
+	tmp->next = *src_head;
+	tmp = tmp->next;
+	tmp->next = NULL;
 	write(1, "ra\n", 3);
+	return (new_head);
 }
