@@ -6,7 +6,7 @@
 /*   By: ajoliet <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/02 13:32:05 by ajoliet           #+#    #+#             */
-/*   Updated: 2022/09/27 17:54:46 by ajoliet          ###   ########.fr       */
+/*   Updated: 2022/09/30 13:30:33 by ajoliet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,12 @@ typedef struct s_list
 	void	*next;
 }		t_list;
 
+t_list	*ft_lstlast(t_list *lst);
+t_list	*ft_lstnew(int content);
+t_list	*lstcreate(char **tab);
+t_list	*ra(t_list **src_head);
+t_list	*rb(t_list **src_head);
+t_list	*sa(t_list **src_head);
 void	ft_laststep(char *av);
 void	ft_lstadd_back(t_list **lst, t_list *new);
 void	ft_error(void);
@@ -30,10 +36,10 @@ void 	verifytab(char **tab);
 void	ft_sort(t_list **stack_a, t_list **stack_b, int maxbit);
 void	pa(t_list **src_head, t_list **dest_head);
 void	pb(t_list **src_head, t_list **dest_head);
-t_list	*ft_lstlast(t_list *lst);
-t_list	*ft_lstnew(int content);
-t_list	*lstcreate(char **tab);
-t_list	*ra(t_list **src_head);
+void	sortthree(t_list **src_head);
+void	sortfive(t_list **src_head, t_list **stack_b);
+void	print_list(t_list *first);
+void	freeall(char **tab, t_list ** mian_stack_head);
 char    **create_tab(char **av);
 char	*ft_strjoin(char const *s1, char const *s2);
 char	**ft_split(char const *s, char c);

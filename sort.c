@@ -6,7 +6,7 @@
 /*   By: ajoliet <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 15:33:27 by ajoliet           #+#    #+#             */
-/*   Updated: 2022/09/27 17:50:11 by ajoliet          ###   ########.fr       */
+/*   Updated: 2022/09/29 16:40:29 by ajoliet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ int		add_id(t_list **first)
 			max = x;
 		comp = comp->next;
 	}
-	return (x);
+	return (max);
 }
 
 int		maxbit(int nb)
@@ -46,8 +46,8 @@ int		maxbit(int nb)
 	int i;
 
 	i = 0;
-	while (nb >> i)
-			i++;
+	while (nb >> i != 0)
+		i++;
 	return (i);
 }
 
@@ -60,17 +60,59 @@ void	ft_sort(t_list **stack_a, t_list **stack_b, int maxbit)
 	i = 0;
 	x = 0;
 	lstsize = ft_lstsize(*stack_a);
-	while (x <= maxbit)
+	while (x < maxbit)
 	{
 		while (i < lstsize)
 		{
-			if (((*stack_a)->nbr >> x) & 1)
-				pb(stack_a, stack_b);
+			if (((*stack_a)->id >> x) & 1)
+				*stack_a = ra(stack_a);
 			else
-				ra(stack_a);
+				pb(stack_a, stack_b);
+			i++;
 		}
-		while (stack_b)
+		while (*stack_b)
 			pa(stack_b, stack_a);
 		x++;
+		i = 0;
+	}
+}
+
+void	sortfive(t_list **src_head, t_list **stack_b)
+{
+	int i;
+
+	i = -1;
+	while (++i < 5)
+	{
+		if ((*src_head)->id < 2)
+			pb(src_head, stack_b);
+		else
+			*src_head = ra(src_head);
+	}
+	if ((*src_head)->id == 0)
+		*stack_b = rb(stack_b);
+	sortthree(src_head);
+	pa(stack_b, src_head);
+	pa(stack_b, src_head);
+}
+
+void	sortthree(t_list **src_head)
+{
+	t_list	*tmp;
+	int x;
+
+// x est le 2e nbr
+	tmp = (*src_head)->next;
+	x = tmp->id;
+	tmp = tmp->next;
+	while ((*src_head)->id > x || x > tmp->id)
+	{
+		if ((*src_head)->id > tmp->id)
+			*src_head = ra(src_head);
+		else
+	 		*src_head = sa(src_head);
+		tmp = (*src_head)->next;
+		x = tmp->id;
+		tmp = tmp->next;
 	}
 }

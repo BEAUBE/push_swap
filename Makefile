@@ -6,7 +6,7 @@
 #    By: ajoliet <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/02 13:22:16 by ajoliet           #+#    #+#              #
-#    Updated: 2022/09/26 13:33:51 by ajoliet          ###   ########.fr        #
+#    Updated: 2022/09/28 11:21:50 by ajoliet          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,7 @@ SRCS = main.c \
 	   ft_sort_utils.c \
 	   sort.c
 OBJS = $(SRCS:.c=.o)
-RM = rm -rf
+RM = rm
 CC = gcc
 CFLAGS = -Wall -Wextra -Werror -g
 
@@ -29,7 +29,7 @@ $(NAME): $(OBJS)
 	$(CC) $(CFLAGS) -o $(NAME) $(OBJS) 
 
 clean:
-	$(RM) $(OBJS) $(NAME)
+	$(RM) $(OBJS)
 	
 fclean: clean
 	$(RM) $(NAME)

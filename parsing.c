@@ -6,7 +6,7 @@
 /*   By: ajoliet <ajoliet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/13 19:11:25 by ajoliet           #+#    #+#             */
-/*   Updated: 2022/09/20 15:42:53 by ajoliet          ###   ########.fr       */
+/*   Updated: 2022/09/30 15:56:59 by ajoliet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@ char    **create_tab(char **av)
     str = ft_strjoin(av[1], " ");
 	while (av[++i])
     {
+		if (av[i][0] == '\0') 
+			ft_error();
 		tmp = ft_strjoin(str, av[i]);
 		free(str);
 		str = NULL;
@@ -51,6 +53,8 @@ void	verifytab(char **tab)
 		j = 0;
 		if (tab[i][j] == '+' || tab[i][j] == '-')
 			j++;
+		if (tab[i][j] == '\0')
+			ft_error();
 		while (tab[i][j] >= '0' && tab[i][j] <= '9')
 			j++;
 		if (tab[i][j] == '\0')
@@ -90,23 +94,25 @@ void	nodoubles(t_list *first)
 	t_list	*fornbr;
 	t_list	*tmp;
 
-	tmp = malloc(sizeof(t_list));
-	fornbr = malloc(sizeof(t_list));
 	fornbr = first;
 	while (fornbr->next != NULL)
 	{
 		nbr = fornbr->nbr;
-//		printf("nbr analysé : %i, comparé à : ", nbr);
 		tmp = fornbr->next;
 		while (tmp != NULL)
 		{
-//			printf("%i ", tmp->nbr);
 			if (tmp->nbr == nbr)
 				ft_error();
 			tmp = tmp->next;
 		}
-//		printf("\n");
 		fornbr = fornbr->next;
+	}
+	//deja trie
+	tmp = first;
+	nbr = tmp->nbr;
+	while (tmp)
+	{
+		tmp = tmp->next;
 	}
 }
 
@@ -119,6 +125,8 @@ int ps_atoi(char *s)
     minus = 1;
     result = 0;
     i = 0;
+	if (!s)
+		ft_error();
     if(s[i] == '-')
     {
         i++;

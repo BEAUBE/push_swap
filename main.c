@@ -6,7 +6,7 @@
 /*   By: ajoliet <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/02 13:16:02 by ajoliet           #+#    #+#             */
-/*   Updated: 2022/09/27 17:52:28 by ajoliet          ###   ########.fr       */
+/*   Updated: 2022/09/30 14:03:58 by ajoliet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,8 @@ int	main(int ac, char **av)
 	t_list	*stack_a;
 	t_list	*stack_b;
 	char **tab;
-//	int i;
 	int x;
 
-	x = 0;
 	(void)stack_b;
 	(void)stack_a;
 	tab = NULL;
@@ -34,16 +32,40 @@ int	main(int ac, char **av)
 		stack_a = lstcreate(tab);
 		stack_b = NULL;
 		nodoubles(stack_a);
-		add_id(&stack_a);
-		print_list(stack_a);
+		x = add_id(&stack_a);
 		x = maxbit(x);
-		ft_sort(&stack_a, &stack_b, x);
-		print_list(stack_a);
+		if (ac == 4)
+			sortthree(&stack_a);
+		else if (ac == 6)
+			sortfive(&stack_a, &stack_b);
+		else
+			ft_sort(&stack_a, &stack_b, x);
 	}
-//	i = 0;
-//	while (tab[i] != NULL)
-//			free(tab[i++]);
-	free(tab);
+	freeall(tab, &stack_a);
+}
+
+void	freeall(char **tab, t_list **main_stack_head)
+{
+	int i;
+	t_list	*tmp;
+
+	i = 0;
+	if (tab)
+	{
+		while (tab[i] != NULL)
+			free(tab[i++]);
+//		free(tab);
+	}
+	if ((*main_stack_head)->next)
+	{
+		tmp = (*main_stack_head);
+		while ((*main_stack_head)->next)
+		{
+			tmp = tmp->next;
+			free((*main_stack_head));
+			*main_stack_head = tmp;
+		}
+	}
 }
 
 void	print_list(t_list *first)
