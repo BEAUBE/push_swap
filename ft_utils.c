@@ -6,7 +6,7 @@
 /*   By: ajoliet <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/08 17:39:35 by ajoliet           #+#    #+#             */
-/*   Updated: 2022/09/16 15:32:32 by ajoliet          ###   ########.fr       */
+/*   Updated: 2022/10/03 17:35:32 by ajoliet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,8 +50,26 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	return (buff);
 }
 
-void ft_error(void)
+void ft_error(char **tab, t_list **stack_a)
 {
+	freeall(tab, stack_a);
 	write(2, "Error\n", 7);
 	exit(1);
+}
+
+int issorted(t_list **stack_a)
+{
+	t_list *tmp;
+	int x;
+
+	tmp = ((*stack_a)->next);
+	x = (*stack_a)->nbr;
+	while (tmp)
+	{
+		if (tmp->nbr < x)
+			return (0);
+		x = tmp->nbr;
+		tmp = tmp->next;
+	}
+	exit(0);
 }

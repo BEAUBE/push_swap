@@ -6,7 +6,7 @@
 /*   By: ajoliet <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/02 13:32:05 by ajoliet           #+#    #+#             */
-/*   Updated: 2022/09/30 13:30:33 by ajoliet          ###   ########.fr       */
+/*   Updated: 2022/10/03 17:26:10 by ajoliet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ t_list	*rb(t_list **src_head);
 t_list	*sa(t_list **src_head);
 void	ft_laststep(char *av);
 void	ft_lstadd_back(t_list **lst, t_list *new);
-void	ft_error(void);
+void	ft_error(char **tab, t_list **stack_a);
 void	nodoubles(t_list *first);
 void 	verifytab(char **tab);
 void	ft_sort(t_list **stack_a, t_list **stack_b, int maxbit);
@@ -43,8 +43,9 @@ void	freeall(char **tab, t_list ** mian_stack_head);
 char    **create_tab(char **av);
 char	*ft_strjoin(char const *s1, char const *s2);
 char	**ft_split(char const *s, char c);
+int		issorted(t_list **stack_a);
 int		ft_lstsize(t_list *lst);
 int		add_id(t_list **first);
 int		verifyacav(int ac, char **av);
-int		ps_atoi(char *s);
+int		ps_atoi(char *s, char **tab, t_list **stack_a);
 int		maxbit(int nb);

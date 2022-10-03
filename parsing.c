@@ -6,7 +6,7 @@
 /*   By: ajoliet <ajoliet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/13 19:11:25 by ajoliet           #+#    #+#             */
-/*   Updated: 2022/09/30 15:56:59 by ajoliet          ###   ########.fr       */
+/*   Updated: 2022/10/03 17:05:24 by ajoliet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ char    **create_tab(char **av)
 	while (av[++i])
     {
 		if (av[i][0] == '\0') 
-			ft_error();
+			ft_error(tab, NULL);
 		tmp = ft_strjoin(str, av[i]);
 		free(str);
 		str = NULL;
@@ -38,7 +38,7 @@ char    **create_tab(char **av)
     tab = ft_split(str, ' ');
     free (str);
 	if (tab == NULL)
-			exit(2);
+			ft_error(tab, NULL);
 	return (tab);
 }
 
@@ -54,13 +54,13 @@ void	verifytab(char **tab)
 		if (tab[i][j] == '+' || tab[i][j] == '-')
 			j++;
 		if (tab[i][j] == '\0')
-			ft_error();
+			ft_error(tab, NULL);
 		while (tab[i][j] >= '0' && tab[i][j] <= '9')
 			j++;
 		if (tab[i][j] == '\0')
 			i++;
 		else
-			ft_error();
+			ft_error(tab, NULL);
 	}
 }
 
@@ -74,7 +74,7 @@ t_list	*lstcreate(char **tab)
 	tmp = NULL;
 	i = 1;
 	first = malloc(sizeof(t_list));
-	first->nbr = ps_atoi(tab[0]);
+	first->nbr = ps_atoi(tab[0], tab, &first);
 	first->next = NULL;
 	tmp = first;
 	while (tab[i] != NULL)
@@ -82,7 +82,7 @@ t_list	*lstcreate(char **tab)
 		tmp->next = malloc(sizeof(t_list));
 		tmp = tmp->next;
 		tmp->next = NULL;
-		tmp->nbr = ps_atoi(tab[i]);
+		tmp->nbr = ps_atoi(tab[i], tab, &first);
 		i++;
 	}
 	return (first);
@@ -102,7 +102,7 @@ void	nodoubles(t_list *first)
 		while (tmp != NULL)
 		{
 			if (tmp->nbr == nbr)
-				ft_error();
+				ft_error(NULL, &first);
 			tmp = tmp->next;
 		}
 		fornbr = fornbr->next;
@@ -116,7 +116,7 @@ void	nodoubles(t_list *first)
 	}
 }
 
-int ps_atoi(char *s)
+int ps_atoi(char *s, char **tab, t_list **stack_a)
 {
     int i;
     int minus;
@@ -126,7 +126,7 @@ int ps_atoi(char *s)
     result = 0;
     i = 0;
 	if (!s)
-		ft_error();
+		ft_error(tab, stack_a);
     if(s[i] == '-')
     {
         i++;
@@ -138,7 +138,7 @@ int ps_atoi(char *s)
     {
         result = result * 10 + s[i] - '0';
         if (result < -2147483648 || result > 2147483647)
-            ft_error();
+            ft_error(tab, stack_a);
         i++;
     }
     return(result * minus);

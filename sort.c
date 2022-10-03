@@ -6,7 +6,7 @@
 /*   By: ajoliet <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 15:33:27 by ajoliet           #+#    #+#             */
-/*   Updated: 2022/09/29 16:40:29 by ajoliet          ###   ########.fr       */
+/*   Updated: 2022/10/03 19:14:53 by ajoliet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,7 @@ void	ft_sort(t_list **stack_a, t_list **stack_b, int maxbit)
 	i = 0;
 	x = 0;
 	lstsize = ft_lstsize(*stack_a);
+	issorted(stack_a);
 	while (x < maxbit)
 	{
 		while (i < lstsize)
