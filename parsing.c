@@ -6,7 +6,7 @@
 /*   By: ajoliet <ajoliet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/13 19:11:25 by ajoliet           #+#    #+#             */
-/*   Updated: 2022/10/03 17:05:24 by ajoliet          ###   ########.fr       */
+/*   Updated: 2022/10/03 19:51:55 by ajoliet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -137,7 +137,7 @@ int ps_atoi(char *s, char **tab, t_list **stack_a)
     while (s[i] >= '0' && s[i] <= '9')
     {
         result = result * 10 + s[i] - '0';
-        if (result < -2147483648 || result > 2147483647)
+        if ((result * minus > 2147483647 || result * minus < -2147483648))
             ft_error(tab, stack_a);
         i++;
     }

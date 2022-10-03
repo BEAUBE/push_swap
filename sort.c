@@ -6,7 +6,7 @@
 /*   By: ajoliet <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 15:33:27 by ajoliet           #+#    #+#             */
-/*   Updated: 2022/10/03 19:14:53 by ajoliet          ###   ########.fr       */
+/*   Updated: 2022/10/03 19:38:34 by ajoliet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,7 +90,7 @@ void	sortfive(t_list **src_head, t_list **stack_b)
 		else
 			*src_head = ra(src_head);
 	}
-	if ((*src_head)->id == 0)
+	if ((*stack_b)->id == 0)
 		*stack_b = rb(stack_b);
 	sortthree(src_head);
 	pa(stack_b, src_head);
